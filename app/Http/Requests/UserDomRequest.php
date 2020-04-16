@@ -4,13 +4,15 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest{
+class UserDomRequest extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize(){
+    public function authorize()
+    {
         return true;
     }
 
@@ -19,19 +21,20 @@ class UserRequest extends FormRequest{
      *
      * @return array
      */
-    public function rules(){
+    public function rules()
+    {
         if($this->method()=='POST') {
             return [
-                'name' => 'required|string',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|string',
-                'telefono' => 'required|string'
+                'user_id' => 'required|string',
+                'calle' => 'required|string',
+                'colonia' => 'required|string',
+                'cp' => 'required|string',
             ];
         } else {
             return [
-                'name' => 'string',
-                'email' => 'email|unique:users,email',
-                'telefono' => 'string'
+                'calle' => 'string',
+                'colonia' => 'string',
+                'cp' => 'string'
             ];
         }
     }

@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('users','UsersController')->except(['create','edit']);
+Route::resource('domicilios','UsersDomicilioController')->except(['create', 'edit']);
 
 Route::resource('users', 'UsersController', ['except' => ['create', 'edit'], 'names' => [
     'index' => 'usuarios.index',
@@ -27,4 +28,5 @@ Route::resource('users', 'UsersController', ['except' => ['create', 'edit'], 'na
     'store' => 'usuarios.store',
     'destroy' => 'usuarios.destroy',
 ]]);
+
 
